@@ -3,8 +3,11 @@ package com.application.bankmanagement.service.command;
 import com.application.bankmanagement.service.BankService;
 
 
-// Command interface for the enum of inner bank services
-// So that we can have all functionalities of the inner bank services in the form of a list, and with effective extension opportunity (Open/Close principle)
+/**
+ *  Command interface for the enum of inner bank services -
+ *  So that we can have all functionalities of the inner bank services in the form of a list, and with effective extension opportunity (observing Open/Close principle)
+  */
+
 public interface BankCommand {
 
     /**

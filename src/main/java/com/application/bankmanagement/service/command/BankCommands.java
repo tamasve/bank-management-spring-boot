@@ -6,8 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  The commands for using the Bank central logic, as enum - an effective approach for the UI to handle central banking transactions
- *  Technically we can have all functionalities of the inner bank services in the form of a list (<< enum .values() ), and with effective extension opportunity (Open/Close principle)
+ *  The commands for using the Bank central logic, as enum - an effective approach for the UI to handle central banking transactions.
+ *  Technically we can have all functionalities of the inner bank services in the form of a list (<< enum .values() ), and with effective extension opportunity (Open/Close principle). **
+ *  The names of enum constants correspond to the menu item names on the UI layout >> the name of the chosen menu item in each call from the UI can be the key in the command map.
  */
 public enum BankCommands implements BankCommand {
 
@@ -63,12 +64,13 @@ public enum BankCommands implements BankCommand {
     });
 
 
-    // ~~~~~ The Structure ~~~~~
+    // ~~~~~ The Inner Structure ~~~~~
     
     private String name;
     private BankCommand cmd;
 
-    public static Map<String, BankCommand> commandsMap;     // the map of enum values
+    // static variable for holding the map of enum values
+    public static Map<String, BankCommand> commandsMap;
 
     // static block creating the map of enum values
     static {
@@ -78,11 +80,13 @@ public enum BankCommands implements BankCommand {
         }
     }
 
+    // the private enum constructor
     private BankCommands(String name, BankCommand cmd) {
         this.name = name;
         this.cmd = cmd;
     }
 
+    // the BankCommand if method implementation
     public AccountDTO execute(AccountDTO accountDTO, BankService bankService) {
         return cmd.execute(accountDTO, bankService);
     }

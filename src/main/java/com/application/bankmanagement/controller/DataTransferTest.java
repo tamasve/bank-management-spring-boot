@@ -60,7 +60,7 @@ public class DataTransferTest {
             }
         } catch (Exception e) {
             log.error(e.getMessage());
-            return "The execution of \"" + command + "\" command FAILED DUE TO  " + e.getMessage();
+            return "The execution of \"" + command + "\" command FAILED DUE TO\n" + e.getMessage();
         }
     }
 

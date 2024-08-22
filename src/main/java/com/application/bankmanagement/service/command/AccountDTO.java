@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *   Data Transfer Object for transferring data between the controllers and the services, during account related transactions
+ *   Data Transfer Object for transferring data between the controllers and the services in account related transactions
  */
 @Data
 @AllArgsConstructor

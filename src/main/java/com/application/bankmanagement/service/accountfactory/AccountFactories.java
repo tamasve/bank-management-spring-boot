@@ -6,7 +6,11 @@ import com.application.bankmanagement.service.bankaccount.*;
 import java.util.HashMap;
 import java.util.Map;
 
-// Fix number of account creators for the fix number of account types
+/**
+ *  Fix number of account creators for the fix number of account types -
+ *  The names of enum constants correspond to the menu item names on the UI layout >> the name of the chosen menu item in each call from the UI can be the key in the factory map.
+  */
+
 public enum AccountFactories implements AccountFactory {
     CURRENT("Current account", CurrentAccount::new),
     DEPOSIT("Deposit account", DepositAccount::new),
@@ -18,7 +22,8 @@ public enum AccountFactories implements AccountFactory {
    private String name;
    private final AccountFactory accountFactory;
 
-    public static Map<String, AccountFactory> factoriesMap;        // the map of enum values
+    // static variable  for holding the map of enum values
+    public static Map<String, AccountFactory> factoriesMap;
 
     // static block creating the map of enum values
     static {

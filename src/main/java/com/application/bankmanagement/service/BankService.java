@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+/**
+ *  This class comprises all banking services, but the access to its methods is not direct, rather through the enum constants of BankCommands.
+ */
 @Service
 public class BankService {
 
@@ -21,6 +24,8 @@ public class BankService {
     private ClientRepository clientRepository;
     private Map<String, BankAccount> accountMap;          // all  bank accounts in a Map: account number - account
 
+    // constructor:
+    // handle dependencies and refresh the account map
     @Autowired
     public BankService(BankAccountDataRepository bankAccountDataRepository,
                        AccountTypeRepository accountTypeRepository,
@@ -31,7 +36,7 @@ public class BankService {
         refreshAccountMap();
     }
 
-    // Refresh the map of all bank account - it is not effective: it always creates a new BankAccount class object for every Entity!
+    // Refresh the map of all bank account - it is not effective: it always creates a new BankAccount class object for every Entity object!
     public void refreshAccountMap() {
         accountMap = new HashMap<>();
         for (BankAccountData ba : bankAccountDataRepository.findAll()) {
@@ -85,7 +90,7 @@ public class BankService {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Central massive account handling
 
-    // each BA calculates the interest based on its own rate, deposit it, and return it to be summarized so that it can later be credited to a central account
+    // each BA calculates the interest based on its own rate, deposit it, and return it to be summarized so that the sum can later be credited to a central account
     public String interestSettlement() {
         Long amount = 0L;
         for (BankAccount bankAccount : accountMap.values())
@@ -107,8 +112,8 @@ public class BankService {
         return number.toString();
     }
 
-    // Bankservice presence tester
+    // BankService presence tester
     public String test() {
-        return "-- Bankservice presence debug test --";
+        return "-- BankService presence debug test: OK --";
     }
 }
